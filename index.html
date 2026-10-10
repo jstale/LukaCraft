@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LukaCraft</title>
+    <link rel="icon" href="textures/blocks/grass_side.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three.module.js" } }
+    </script>
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <div id="hud" class="hidden">
+      <div id="crosshair"></div>
+      <pre id="debug"></pre>
+      <div id="toast"></div>
+      <div id="item-name"></div>
+      <div id="hotbar"></div>
+      <div id="water-overlay"></div>
+    </div>
+
+    <div id="inventory" class="hidden">
+      <div class="panel">
+        <section class="inv-left">
+          <h2>Inventory</h2>
+          <div id="inv-grid" class="grid"></div>
+          <div id="inv-hotbar" class="grid hotbar-row"></div>
+          <p class="hint">Click to pick up / place items. Esc or E to close.</p>
+        </section>
+        <section class="inv-right">
+          <h2>Crafting <span id="table-status"></span></h2>
+          <div id="recipes"></div>
+          <p class="hint">Click a recipe to craft (Shift+click crafts many).</p>
+        </section>
+      </div>
+      <div id="cursor-item" class="slot"><img draggable="false" alt="" /><span class="count"></span><div class="dur"><div></div></div></div>
+      <div id="tooltip"></div>
+    </div>
+
+    <div id="pause" class="hidden overlay">
+      <div class="menu-box">
+        <h1>Paused</h1>
+        <button id="btn-resume">Back to game</button>
+        <button id="btn-quit">Save &amp; quit to title</button>
+      </div>
+    </div>
+
+    <div id="menu" class="overlay">
+      <div class="menu-box">
+        <h1 class="logo">LukaCraft</h1>
+        <div id="loading">Loading textures…</div>
+        <div id="menu-buttons" style="display: none">
+          <button id="btn-continue">Continue saved world</button>
+          <div class="seed-row">
+            <label for="seed">Seed</label>
+            <input id="seed" type="text" autocomplete="off" spellcheck="false" />
+          </div>
+          <button id="btn-new">Create new world</button>
+        </div>
+        <div class="controls">
+          <div><b>WASD</b> move</div>
+          <div><b>Mouse</b> look</div>
+          <div><b>Space</b> jump / swim</div>
+          <div><b>Shift</b> sprint</div>
+          <div><b>Left click</b> (hold) mine</div>
+          <div><b>Right click</b> place / use table</div>
+          <div><b>1–9 / wheel</b> hotbar</div>
+          <div><b>E</b> inventory &amp; crafting</div>
+          <div><b>F</b> toggle flying</div>
+          <div><b>F3</b> debug info</div>
+          <div><b>+ / −</b> render distance</div>
+          <div><b>Esc</b> pause</div>
+        </div>
+        <p class="tip">Punch trees → planks → crafting table → wooden pickaxe → stone → copper → iron → gold.</p>
+      </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
